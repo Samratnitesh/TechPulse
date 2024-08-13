@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Tweet Section
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center m-4">TechPulse</h1>
+
+<h4>
+    {% if form.instance.pk %}
+    Edit Tweet
+    {% else %}
+    What is in your mind?
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="form m-4">
+        {% csrf_token %}   
+        {{ form.as_p }}
+
+        <button class='btn btn-warning' type='submit'>Tweet</button>
+    </form>
+
+    <a href="{% url 'tweet_list' %}" class="btn btn-success">Back</a>
+
+</h4>
+{% endblock %}
